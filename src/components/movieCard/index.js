@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favorites } = useContext(MoviesContext);
+  const { favorites, addToFavorites } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -36,10 +36,10 @@ export default function MovieCard({ movie, action }) {
     movie.favorite = false
   }
 
-  //const handleAddToFavorite = (e) => {
-  //  e.preventDefault();
-   // addToFavorites(movie);
-  //};
+  const handleAddToFavorite = (e) => {
+    e.preventDefault();
+    addToFavorites(movie);
+  };
 
   return (
     <Card className={classes.card}>
