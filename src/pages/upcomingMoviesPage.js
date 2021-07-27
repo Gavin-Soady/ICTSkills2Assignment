@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import { withRouter } from "react-router-dom";
-import { useQuery } from 'react-query'
-import Spinner from '../components/spinner'
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import { useQuery } from 'react-query';
+import Spinner from '../components/spinner';
+//import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const UpcomingMoviesPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('discover', getUpcomingMovies)
@@ -25,10 +26,10 @@ const UpcomingMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title="Discover Movies"
+      title="upcoming Movies"
       movies={movies}
       action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />
+        return <PlaylistAddIcon movie={movie} />
       }}
     />    
   );
