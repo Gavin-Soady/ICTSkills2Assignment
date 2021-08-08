@@ -56,6 +56,10 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleRatingChange = (e) => {
+    handleChange(e, "rating", e.target.value);
+  };
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
@@ -63,6 +67,7 @@ export default function FilterMoviesCard(props) {
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
+        <FormControl className={classes.formControl}>
         <TextField
             className={classes.formControl}
             id="filled-search"
@@ -71,8 +76,18 @@ export default function FilterMoviesCard(props) {
             value={props.titleFilter}
             variant="filled"
             onChange={handleTextChange}
+        
         />
-        <FormControl className={classes.formControl}>
+          <TextField
+            className={classes.formControl}
+            id="rating-search"
+            label="Minumum Rating"
+            type="search"
+            value={props.ratingFilter}
+            variant="rating"
+            onChange={handleRatingChange}
+          />
+       
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
@@ -88,6 +103,7 @@ export default function FilterMoviesCard(props) {
               );
             })}
           </Select>
+          
         </FormControl>
       </CardContent>
       <CardMedia
