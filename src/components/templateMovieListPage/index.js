@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 function MovieListPageTemplate({ movies, title, action }) {
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
+  const [genreFilter, setGenreFilter] = useState("");
   const [ratingFilter, setRatingFilter] = useState("5");
   const genreId = Number(genreFilter);
   const rating = Number(ratingFilter);

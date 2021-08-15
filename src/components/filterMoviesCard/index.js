@@ -27,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 220,
     backgroundColor: "rgb(255, 255, 255)",
   },
+  
+  genreSelect: {
+    marginLeft:10,
+   
+  },
+  genreLabel: {
+    marginLeft: 10,
+   
+  },
+
 }));
 
 export default function FilterMoviesCard(props) {
@@ -67,7 +77,6 @@ export default function FilterMoviesCard(props) {
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
-        <FormControl className={classes.formControl}>
         <TextField
             className={classes.formControl}
             id="filled-search"
@@ -84,12 +93,13 @@ export default function FilterMoviesCard(props) {
             label="Minumum Rating"
             type="search"
             value={props.ratingFilter}
-            variant="rating"
+            variant="filled"
             onChange={handleRatingChange}
           />
        
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
+       <FormControl className={classes.formControl}>
+          <InputLabel className={classes.genreLabel} id="genre-label">Genre</InputLabel>
+          <Select className={classes.genreSelect}
             labelId="genre-label"
             id="genre-select"
             value={props.genreFilter}
@@ -103,7 +113,6 @@ export default function FilterMoviesCard(props) {
               );
             })}
           </Select>
-          
         </FormControl>
       </CardContent>
       <CardMedia

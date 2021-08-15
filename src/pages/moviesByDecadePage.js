@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { getMoviesByDecade80s } from "../api/tmdb-api";
+import { getMoviesByDecade } from "../api/tmdb-api";
 import { withRouter } from "react-router-dom";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -8,7 +8,20 @@ import AddToWatchlistIcon from '../components/cardIcons/addToWatchlist';
 
 
 const MoviesByDecadePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMoviesByDecade80s)
+
+
+  const start = props.match.params.start;
+  const end = props.match.params.end;
+
+  /*console.log(start1);
+  console.log(end1);
+  console.log(props);
+  const start = "1980-01-01";
+  const end = "1989-01-01";
+  */
+
+  const {  data, error, isLoading, isError }  =
+    useQuery( [start,end] , getMoviesByDecade); 
   // I had refactored this already from exercise 1
 
   if (isLoading) {

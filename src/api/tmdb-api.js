@@ -67,6 +67,28 @@
     return response.json();
   };
 
+  export const getMoviesByDecade = async (key, start) => {
+
+    console.log(start);
+    console.log(key.queryKey[0]);
+    console.log(key.queryKey[1]);
+
+    const startYear = key.queryKey[0];
+    const endYear = key.queryKey[1];
+    console.log("EndYear " + endYear);
+
+    const response = await fetch(
+    
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`
+      
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  };
+
+/*
   export const getMoviesByDecadePre80s = async () => {
     const response = await fetch(
     
@@ -138,3 +160,4 @@
     }
     return response.json();
   };
+  */

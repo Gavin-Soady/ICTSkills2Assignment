@@ -31,15 +31,29 @@ const SiteHeader = ( { history }) => {
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Movies By Decade", path: "/movies/moviesByDecade" },
   ];
+
+  const decadeOptions = [
+    { label: "Pre 80s",  path: "/movies/moviesByDecade/1920/1979" },
+    { label: "80s",  path: "/movies/moviesByDecade/1980/1989" },
+    { label: "90s",  path: "/movies/moviesByDecade/1990/1999" },
+    { label: "00s",  path: "/movies/moviesByDecade/2000/2009" },
+    { label: "10s",  path: "/movies/moviesByDecade/2010/2019" },
+    { label: "20s",  path: "/movies/moviesByDecade/2020/2029" },
+  ];
+
 
   const handleMenuSelect = (pageURL) => {
     history.push(pageURL);
+    setAnchorEl(null);
   };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event) => {
+    setAnchorEl(null);
   };
 
   return (
@@ -47,10 +61,10 @@ const SiteHeader = ( { history }) => {
       <AppBar position="fixed" color="secondary">
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-            TMDB Client
+            GMDB
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            All you ever wanted to know about Movies!
+            Movies at your finger tips
           </Typography>
             {isMobile ? (
               <>
@@ -86,6 +100,7 @@ const SiteHeader = ( { history }) => {
                       {opt.label}
                     </MenuItem>
                   ))}
+                  
                 </Menu>
               </>
             ) : (
@@ -101,6 +116,29 @@ const SiteHeader = ( { history }) => {
                 ))}
               </>
             )}
+            <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleMenu}>
+            Movies By Decade
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={() => setAnchorEl(null)}
+                //TransitionComponent={Fade}
+                color="inherit"
+
+              >
+                 {decadeOptions.map((opt) => (
+                    <MenuItem
+                   
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+              </Menu>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />
