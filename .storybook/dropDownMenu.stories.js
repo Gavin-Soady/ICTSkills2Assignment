@@ -1,15 +1,16 @@
+
 import React from "react";
-import SiteHeader from "../components/siteHeader";
+import DropDownMenu from "../components/dropDownMenu";
 import { MemoryRouter } from "react-router";
 
 export default {
-  title: "Home/Drop Down Menu",
-  component: SiteHeader,
+  title: "Home Page/DropDownMenu",
+  component: DropDownMenu,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
   ],
 };
 
-export const Basic = () => <SiteHeader />;
+export const Basic = () => <DropDownMenu />;
 
 Basic.storyName = "Default";

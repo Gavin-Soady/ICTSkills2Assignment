@@ -79,7 +79,8 @@
 
     const response = await fetch(
     
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`
+      
+     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`
       
     );
     if (!response.ok) {
@@ -88,6 +89,23 @@
     return response.json();
   };
 
+
+  export const getMoviesByStar = async (props) => {
+
+    console.log(props.queryKey[0]);
+    
+    const id = props.queryKey[0];
+   
+    const response = await fetch(
+      
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&with_people=${id}&sort_by=vote_average.desc`
+      
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  };
 /*
   export const getMoviesByDecadePre80s = async () => {
     const response = await fetch(

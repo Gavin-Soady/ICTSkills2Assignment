@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { getMoviesByDecade } from "../api/tmdb-api";
+import { getMoviesByStar} from "../api/tmdb-api";
 import { withRouter } from "react-router-dom";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -8,23 +8,17 @@ import AddToWatchlistIcon from '../components/cardIcons/addToWatchlist';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 
-const MoviesByDecadePage = (props) => {
+const MoviesByStarsPage = (props) => {
 
 
-  const start = props.match.params.start;
-  const end = props.match.params.end;
-  const decade = props.match.params.decade;
-  const title = "Movies of the " + decade;
+  const id = props.match.params.id;
+  const star = props.match.params.star;
+  const title =  star + " Movies" ;
 
-  /*console.log(start1);
-  console.log(end1);
-  console.log(props);
-  const start = "1980-01-01";
-  const end = "1989-01-01";
-  */
+  console.log(id);
 
   const {  data, error, isLoading, isError }  =
-    useQuery( [start,end] , getMoviesByDecade); 
+    useQuery( [id] , getMoviesByStar); 
   // I had refactored this already from exercise 1
 
   if (isLoading) {
@@ -52,4 +46,4 @@ const MoviesByDecadePage = (props) => {
   );
 };
 
-export default withRouter(MoviesByDecadePage);
+export default withRouter(MoviesByStarsPage);

@@ -5,10 +5,11 @@ import { withRouter } from "react-router-dom";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToWatchlistIcon from '../components/cardIcons/addToWatchlist';
+import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 
 const UpcomingMoviesPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getUpcomingMovies)
+  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
   // I had refactored this already from exercise 1
 
   if (isLoading) {
@@ -27,10 +28,10 @@ const UpcomingMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title="upcoming Movies"
+      title="Upcoming Movies"
       movies={movies}
       action={(movie) => {
-        return <AddToWatchlistIcon movie={movie} />
+        return <AddToFavoritesIcon movie={movie} />
       }}
     />    
   );

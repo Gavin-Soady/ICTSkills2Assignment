@@ -12,31 +12,18 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { Popover } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  stars: {
-    marginTop: -320,
-  },
-  decades: {
-    marginTop: -320,
-    marginLeft: 350,
-
-  },
-  
   offset: theme.mixins.toolbar,
 }));
 
-const SiteHeader = ( { history }) => {
+const DropDownMenu = ( { history }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorEl1, setAnchorEl1] = useState(null);
-  const [anchorEl2, setAnchorEl2] = useState(null);
   const open = Boolean(anchorEl);
-  const openStar = Boolean(anchorEl1);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -55,33 +42,19 @@ const SiteHeader = ( { history }) => {
     { label: "20s",  path: "/movies/moviesByDecade/2020/2029/20s" },
   ];
 
-  const starOptions = [
-    { label: "Tom Cruise",  path: "/movies/moviesByStars/500/Tom Cruise" },
-    { label: "Brad Pitt",  path: "/movies/moviesByStars/287/Brad Pitt" },
-    { label: "Scarlett Johansson",  path: "/movies/moviesByStars/1245/Scarlett Johansson" },
-    { label: "Angelina Jolie",  path: "/movies/moviesByStars/11701/Angelina Jolie" },
-    { label: "Leonardo Dicaprio",  path: "/movies/moviesByStars/6193/Leonardo Dicaprio" },
-    { label: "Anne Hathaway",  path: "/movies/moviesByStars/1813/Anne Hathaway" },
-  ];
 
   const handleMenuSelect = (pageURL) => {
     history.push(pageURL);
-    setAnchorEl2(null);
-    setAnchorEl1(null);
+    setAnchorEl(null);
   };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenu1 = (event) => {
-    setAnchorEl1(event.currentTarget);
+  const handleClose = (event) => {
+    setAnchorEl(null);
   };
-
-  const handleMenu2 = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
-
 
   return (
     <>
@@ -143,52 +116,22 @@ const SiteHeader = ( { history }) => {
                 ))}
               </>
             )}
-            <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleMenu2}>
+            <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleMenu}>
             Movies By Decade
               </Button>
               <Menu
-              className={classes.decades}
                 id="simple-menu"
-                anchorEl2={anchorEl2}
-                anchorOrigin={{
-                  vertical: 'center',
-                  horizontal: "center",
-                }}
+                anchorEl={anchorEl}
                 keepMounted
-                open={Boolean(anchorEl2)}
-                onClose={() => setAnchorEl2(null)}
-                //TransitionComponent={Fade}
-                color="inherit"
-              >
-                 {decadeOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-              </Menu>
-              <Button aria-controls="stars-menu" aria-haspopup="true" color="inherit" onClick={handleMenu1}>
-            Movies By Stars
-              </Button>
-              <Menu
-              className={classes.stars}
-                id="stars-menu"
-                anchorEl1={anchorEl1}
-                anchorOrigin={{
-                  vertical: 'center',
-                  horizontal: "right",
-                }}
-                keepMounted
-                open={Boolean(anchorEl1)}
-                onClose={() => setAnchorEl1(null)}
+                open={Boolean(anchorEl)}
+                onClose={() => setAnchorEl(null)}
                 //TransitionComponent={Fade}
                 color="inherit"
 
               >
-                 {starOptions.map((opt) => (
+                 {decadeOptions.map((opt) => (
                     <MenuItem
+                   
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
                     >
@@ -203,4 +146,4 @@ const SiteHeader = ( { history }) => {
   );
 };
 
-export default withRouter(SiteHeader);
+export default withRouter(DropDownMenu);
