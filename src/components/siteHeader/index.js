@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 350,
 
   },
+  root: {
+    backgroundColor: "rgb(10, 126, 140)",
+  },
   
   offset: theme.mixins.toolbar,
 }));
@@ -85,7 +88,7 @@ const SiteHeader = ( { history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="primary">
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
             Gavins Movie Database
