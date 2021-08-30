@@ -67,6 +67,7 @@
     return response.json();
   };
 
+  // created a dynamically loaded movies by decade by passing in the decade as a prop and pass it int othhe query string
   export const getMoviesByDecade = async (key, start) => {
 
     console.log(start);
@@ -76,12 +77,12 @@
     const startYear = key.queryKey[0];
     const endYear = key.queryKey[1];
     console.log("EndYear " + endYear);
-
     const response = await fetch(
     
       
      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`
-      
+     
+     
     );
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -97,15 +98,36 @@
     const id = props.queryKey[0];
    
     const response = await fetch(
-      
+
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&with_people=${id}&sort_by=vote_average.desc`
-      
+    
     );
     if (!response.ok) {
       throw new Error(response.json().message);
     }
     return response.json();
   };
+
+  export const getSimilarMovies = async (props) => {
+
+    console.log(props.queryKey[0]);
+  
+    const movie_id = props.queryKey[0];
+   
+    const response = await fetch(
+
+      `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  };
+
+
+
+
 /*
   export const getMoviesByDecadePre80s = async () => {
     const response = await fetch(
