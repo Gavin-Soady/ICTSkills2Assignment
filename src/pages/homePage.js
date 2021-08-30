@@ -25,7 +25,7 @@ const HomePage = (props) => {
 
   return (
     <PageTemplate
-      title="Discovered Movies"
+      title="Discover Movies"
       movies={movies}
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
