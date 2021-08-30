@@ -24,9 +24,15 @@ Extended the Movies App to add filter for minumum rating, add a search by decade
 ## API Data Model.
 
 getMoviesByDecade
+
 Takes in a parameters of start year and end year and places them into:
+
 https://api.themoviedb.org/3/discover/movie?api_key=8fa9d1872a01407fd953f5ce6bad7b25&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.gte=1980-01-01&primary_release_date.lte=1989-12-31
+
 to return:
+
+```javascript
+
 {
 adult: false,
 backdrop_path: "/bDnIpQHvr9YqCeDUsa8H4oWSTOF.jpg",
@@ -45,13 +51,17 @@ video: false,
 vote_average: 6.6,
 vote_count: 1951
 },
+```
  
 getMoviesByStar
+
 Takes in a actor id paramater and places it into:
-   https://api.themoviedb.org/3/discover/movie?api_key=8fa9d1872a01407fd953f5ce6bad7b25&with_people=287&sort_by=vote_average.desc
+
+https://api.themoviedb.org/3/discover/movie?api_key=8fa9d1872a01407fd953f5ce6bad7b25&with_people=287&sort_by=vote_average.desc
 
 to return:
 
+```javascript
 {
 adult: false,
 backdrop_path: "/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg",
@@ -70,11 +80,17 @@ video: false,
 vote_average: 8.4,
 vote_count: 22295
 },
+```
 
 getSimilarMovies
+
 Takes in a movie id paramater and places it into:
+
 https://api.themoviedb.org/3/movie/550/similar?api_key=8fa9d1872a01407fd953f5ce6bad7b25&language=en-US&page=1
 
+to return:
+
+```javascript
 {
 adult: false,
 backdrop_path: "/ojG57hVx69vhk5DDGPIcfyRR55I.jpg",
@@ -94,6 +110,7 @@ video: false,
 vote_average: 8.025,
 vote_count: 2676
 },
+```
 
 ## App Design.
 
@@ -105,18 +122,19 @@ vote_count: 2676
 
 ### UI Design.
 CLicking the Movies by decade option will giive you a drop down menu to select a decade
+
 ![image](https://user-images.githubusercontent.com/60347182/131417831-519d828c-1532-4d2d-9218-8892b2071694.png)
 
 Clicking on Movies by Starts option will give you a drop down menu to select a popular actor
+
 ![image](https://user-images.githubusercontent.com/60347182/131418049-635c69ed-d6b6-419c-bb4b-9c9c8b7c93bc.png)
 
 The filter card has a new filter by minumum rating fuctionality
+
 ![image](https://user-images.githubusercontent.com/60347182/131418207-2d1e5cbc-5f19-4365-9c87-403c15551ceb.png)
 
 
 ### Routing.
-
-...... Insert a list of the routes supported by your app and state the associated view. If relevant, specify which of the routes require authentication, i.e. protected/private. [For the Movies Fan app, only new routes should be listed.] ......... 
 
 + get /similarMovies/:id/:title  - SimilarMoviesPage
 + get /movies/moviesByStars/:id/:star  - MoviesByStarsPage
