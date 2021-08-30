@@ -143,10 +143,15 @@ The filter card has a new filter by minumum rating fuctionality
 
 ## Independent learning (If relevant).
 I used drop down menus from material ui library
+
 C:\Users\gsoad\Desktop\Desktop\WIT\ICT Skills 2\AssignmentApp\ictskills-moviesApp\src\components\dropDownMenu\index.js
+
 https://material-ui.com/components/menus/
 
 Multiple prop routing path
+
 C:\Users\gsoad\Desktop\Desktop\WIT\ICT Skills 2\AssignmentApp\ictskills-moviesApp\src\index.js
+
 C:\Users\gsoad\Desktop\Desktop\WIT\ICT Skills 2\AssignmentApp\ictskills-moviesApp\src\api\tmdb-api.js
+
 https://betterprogramming.pub/how-to-pass-multiple-route-parameters-in-a-react-url-path-4b919de0abbe
