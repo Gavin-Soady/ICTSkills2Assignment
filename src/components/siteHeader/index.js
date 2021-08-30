@@ -85,10 +85,10 @@ const SiteHeader = ( { history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="secondary">
+      <AppBar position="fixed" color="primary">
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-            GMDB
+            Gavins Movie Database
           </Typography>
           <Typography variant="h6" className={classes.title}>
             Movies at your finger tips
