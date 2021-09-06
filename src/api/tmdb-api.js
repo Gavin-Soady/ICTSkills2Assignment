@@ -14,7 +14,7 @@
     // eslint-disable-next-line no-unused-vars
     const [prefix, { id }] = args.queryKey;
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&include_adult=false`
     );
     if (!response.ok) {
       throw new Error(response.json().message);

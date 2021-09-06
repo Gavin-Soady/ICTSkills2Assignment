@@ -45,8 +45,8 @@ const SiteHeader = ( { history }) => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Upcoming", path: "/movies/upcoming" },
+    //{ label: "Favorites", path: "/movies/favorites" },
+    //{ label: "Upcoming", path: "/movies/upcoming" },
   ];
 
   const decadeOptions = [
@@ -91,7 +91,7 @@ const SiteHeader = ( { history }) => {
       <AppBar position="fixed" className={classes.root}>
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-            Gavins Movie Database
+            Movie Database
           </Typography>
           <Typography variant="h6" className={classes.title}>
             Movies at your finger tips
