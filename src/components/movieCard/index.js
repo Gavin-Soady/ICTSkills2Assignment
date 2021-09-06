@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
   },
+  header:{ height: 60 },
+  
 });
 
 export default function MovieCard({ movie, action, action2 }) {
